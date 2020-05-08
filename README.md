@@ -2,8 +2,13 @@
 Versao 1;
 
 ## Descrição
-
 Microsserviço de catálogo
+
+Desafio 1  
+[x] - Criar Recurso de Category  
+[x] - Criar Recurso de Genre
+
+Foram criados as respectivas Factory,Model,Controller,Migration,Seed.
 
 ## Rodar a aplicação
 
