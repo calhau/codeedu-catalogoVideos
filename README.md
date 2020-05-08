@@ -1,6 +1,5 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="http://maratona.fullcycle.com.br/public/img/logo-maratona.png"/></a>
-</p>
+## Aluno Bruno Leal
+Versao 1;
 
 ## Descrição
 
@@ -8,22 +7,17 @@ Microsserviço de catálogo
 
 ## Rodar a aplicação
 
-#### Para Windows
+Estamos usando o docker, logo basta entrar no diretorio raiz e executar  
+docker-compose up -d
 
+#### Para Windows
 (Só funciona no Git Bash ou similar)
 ```bash
 dos2unix.exe .docker\entrypoint.sh
 ```
 Isto irá converter os caracteres de final de linha e final de arquivo para unix style.
 
-#### Crie os containers com Docker
-
-```bash
-$ docker-compose up
-```
-
-#### Accesse no browser
-
+#### Accessar Aplicação
 ```
 http://localhost:8000
 ```
