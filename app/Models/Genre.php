@@ -14,4 +14,6 @@ class Genre extends Model
     protected $casts = [
         'id' => 'string'
     ];
+    // o id estava gerado como 0,1,2,3...agora sera com UUID
+    public $incrementing = false;
 }
