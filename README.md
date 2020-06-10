@@ -40,3 +40,10 @@ Testar
 
 - vendor/bin/phpunit --filter CategoryTest::testIfUseTraits
 - vendor/bin/phpunit --filter BasicCrudController::testIfFindOrFailFetchModel
+
+
+Desafio CastMember
+
+1 - php artisan make:model Models/CastMember --all
+2 - php artisan make:seeder CastMembersTableSeeder
+3 - Mover controller para pasta API - composer dump-autoload -o
