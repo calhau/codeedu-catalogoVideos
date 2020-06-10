@@ -22,11 +22,14 @@ class CategoryControllerTest extends TestCase
     protected function setUp(): void {
         parent::setUp();
         $this->category = factory(Category::class)->create();
+
     }
 
     public function testIndex()
     {
+
         //fazer uma requisição e ver uma categoria
+        // $response = $this->get(route('categories.index'));
         $response = $this->get(route('categories.index'));
 
         $response->assertStatus(200)

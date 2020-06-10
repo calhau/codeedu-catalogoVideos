@@ -34,3 +34,9 @@ Para rodar testes => vendor/bin/phpunit --filter NomeClass (apenas a classe sera
 Para rodar testes => vendor/bin/phpunit --filter NomeClass::testExample (apenas o metodo sera testada)  
 Para criar testes => php artisan make:test CategoryTest --unit  
 *lembrar que o prefixo dos metodos devem ser "test"* 
+
+
+Testar  
+
+- vendor/bin/phpunit --filter CategoryTest::testIfUseTraits
+- vendor/bin/phpunit --filter BasicCrudController::testIfFindOrFailFetchModel
