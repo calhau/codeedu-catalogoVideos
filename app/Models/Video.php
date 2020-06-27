@@ -15,7 +15,7 @@ class Video extends Model
     protected $fillable = [
         'title',
         'description',
-        'year_lauched',
+        'year_launched',
         'opened',
         'rating',
         'duration'
@@ -26,7 +26,7 @@ class Video extends Model
     protected $casts = [
         'id' => 'string',
         'opened' => 'boolean',
-        'year_lauched' => 'integer',
+        'year_launched' => 'integer',
         'duration' => 'integer',
     ];
 

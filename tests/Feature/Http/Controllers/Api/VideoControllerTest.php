@@ -22,7 +22,7 @@ class VideoControllerTest extends TestCase
         $this->sendData = [
             'title' => 'title',
             'description' => 'description',
-            'year_lauched' => 2010,
+            'year_launched' => 2010,
             'rating' => Video::RATING_LIST[0],
             'duration' => 90,
 
@@ -43,7 +43,7 @@ class VideoControllerTest extends TestCase
         $data = [
             'title' => '',
             'description' => '',
-            'year_lauched' => '',
+            'year_launched' => '',
             'rating' => '',
             'duration' => '',
             'categories_id' => '',
@@ -69,7 +69,7 @@ class VideoControllerTest extends TestCase
 
     public function testInvalidationYearLauchedField()
     {
-        $data = ['year_lauched' => 'a'];
+        $data = ['year_launched' => 'a'];
         $this->assertInvalidationInStoreAction($data, 'date_format', ['format' => 'Y']);
         $this->assertInvalidationInUpdateAction($data, 'date_format', ['format' => 'Y']);
     }
