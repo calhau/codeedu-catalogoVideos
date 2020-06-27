@@ -31,4 +31,13 @@ class Video extends Model
     ];
 
     public $incrementing = false;
+
+    public function categories(){
+        //caso o nome da tabela não esteja no padrao do laravel, passar como segundo parametro na função abaixo
+        return $this->belongsToMany(Category::class);
+    }
+    public function genres(){
+        //caso o nome da tabela não esteja no padrao do laravel, passar como segundo parametro na função abaixo
+        return $this->belongsToMany(Genre::class);
+    }
 }
