@@ -24,7 +24,8 @@ class VideoControllerTest extends TestCase
             'description' => 'description',
             'year_lauched' => 2010,
             'rating' => Video::RATING_LIST[0],
-            'duration' => 90
+            'duration' => 90,
+
         ];
     }
 
@@ -45,6 +46,8 @@ class VideoControllerTest extends TestCase
             'year_lauched' => '',
             'rating' => '',
             'duration' => '',
+            'categories_id' => '',
+            'genres_id' => ''
         ];
         $this->assertInvalidationInStoreAction($data, 'required');
         $this->assertInvalidationInUpdateAction($data, 'required');
@@ -83,6 +86,26 @@ class VideoControllerTest extends TestCase
         $data = ['rating' => 0];
         $this->assertInvalidationInStoreAction($data, 'in');
         $this->assertInvalidationInUpdateAction($data, 'in');
+    }
+
+    // aula9 - testando invalidacao dos relacionamentos de video
+    public function testInvalidationCategoriesIdField(){
+        $data = [ 'categories_id' => 'a'];
+        $this->assertInvalidationInStoreAction($data, 'array');
+        $this->assertInvalidationInUpdateAction($data, 'array');
+
+        $data = [ 'categories_id' => [100]];
+        $this->assertInvalidationInStoreAction($data, 'exists');
+        $this->assertInvalidationInUpdateAction($data, 'exists');
+    }
+    public function testInvalidationGenresIdField(){
+        $data = [ 'genres_id' => 'a'];
+        $this->assertInvalidationInStoreAction($data, 'array');
+        $this->assertInvalidationInUpdateAction($data, 'array');
+
+        $data = [ 'genres_id' => [100]];
+        $this->assertInvalidationInStoreAction($data, 'exists');
+        $this->assertInvalidationInUpdateAction($data, 'exists');
     }
 
 
