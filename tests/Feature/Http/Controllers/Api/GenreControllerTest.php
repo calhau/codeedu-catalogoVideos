@@ -1,13 +1,9 @@
 <?php
 
 namespace Tests\Feature\Http\Controllers\Api;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\Genre;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\TestResponse;
-use Lang;
 use Tests\Traits\TestSaves;
 use Tests\Traits\TestValidations;
 
