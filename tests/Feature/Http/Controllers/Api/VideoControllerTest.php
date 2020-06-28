@@ -206,12 +206,12 @@ class VideoControllerTest extends TestCase
             ->andReturn([]);
 
 
-            $controller->shouldReceive('handleRelations')
+        $controller->shouldReceive('handleRelations')
             ->once()
             ->andThrow(new TestException());
 
         $request = \Mockery::mock(Request::class);
-            try{
+        try{
             $controller->store($request);
         }catch(TestException $excepection){
             $this->assertCount(1, Video::all());
