@@ -6,8 +6,6 @@ use App\Http\Controllers\Api\BasicCrudController;
 use App\Models\Video;
 use Illuminate\Http\Request;
 
-use function PHPSTORM_META\map;
-
 class VideoController extends BasicCrudController
 {
     private $rules;
@@ -35,27 +33,39 @@ class VideoController extends BasicCrudController
     public function store(Request $request)
     {
         $validatedData = $this->validate($request, $this->rulesStore());
+        $self = $this;
         /** @var Video $obj */
 
-        $objNovo = \DB::transaction(function () use($request, $validatedData) {
+        $obj = \DB::transaction(function () use($request, $validatedData, $self) {
             $obj = $this->model()::create($validatedData);
-            $obj->categories()->sync($request->get('categories_id'));
-            $obj->genres()->sync($request->get('genres_id'));
+            $self->handleRelations($obj, $request);
+            //Retirado qnd inseri o handleRelations() -> atenção ao $this do escopo.
+            // $obj->categories()->sync($request->get('categories_id'));
+            // $obj->genres()->sync($request->get('genres_id'));
+
             // throw new \Exception();
             return $obj;
         });
-        $objNovo->refresh();
-        return $objNovo;
+        $obj->refresh();
+        return $obj;
     }
 
     public function update(Request $request, $id)
     {
         $obj = $this->findOrFail($id);
         $validatedData = $this->validate($request, $this->rulesUpdate());
-        $obj->update($validatedData);
-        $obj->categories()->sync($request->get('categories_id'));
-        $obj->genres()->sync($request->get('genres_id'));
+        $self = $this;
+        $objNovo = \DB::transaction(function () use($request, $validatedData, $self, $obj) {
+            $obj->update($validatedData);
+            $self->handleRelations($obj, $request);
+            return $obj;
+        });
         return $obj;
+    }
+
+    protected function handleRelations($video, Request $request){
+        $video->categories()->sync($request->get('categories_id'));
+        $video->genres()->sync($request->get('genres_id'));
     }
 
     protected function model()
